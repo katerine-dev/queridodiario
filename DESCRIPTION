@@ -1,15 +1,22 @@
 Package: queridodiario
-Title: What the Package Does (One Line, Title Case)
+Title: Querido Diário API in R 
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+      c(person(given = "Katerine",
+         family = "Witkoski",
+         role = c("aut", "cre"),
+         email = "kwitkoski@abj.org.br",
+         comment = c(ORCID = "0000-0002-3691-6569")), 
+      person(given = "Renata",
+          family = "Hirota",
+          role = c("aut"),
+          email = "rhirota@abj.org.br"),
+      person(given = "Ricardo",
+          family = "Feliz",
+          role = c("aut"),
+          email = "rfeliz@abj.org.br"))         
+Description: Useful Tool for Querido Diário API.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
