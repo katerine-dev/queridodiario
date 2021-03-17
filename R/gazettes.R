@@ -36,6 +36,7 @@ get_gazettes <- function(since = NULL,
   url_params <-  paste(payload, collapse = "&")
   api  <-paste(c(BASE_API_URL, endpoint, "?", url_params), collapse = "")
   response <- GET(api)
-  # response.raise_for_status()
-  # return response.json()
+  http_status(response)
+  responseParsed <- content(response, as="parsed")
+  responseParsed
 }
