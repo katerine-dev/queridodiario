@@ -1,14 +1,14 @@
 #' get_gazettes
-#'Descrição da função
-#'parâmetros
-#' @param since data a partir da qual, em formato YYY-MM-DD
+#'
+#' Requisita diários oficiais à API do Querido Diário e retorna um json
+#' @param since data a partir da qual se deseja pesquisar, em formato YYY-MM-DD
 #' @param until data até quando, em formato YYY-MM-DD
 #' @param keywords palavras-chave que serão pesquisadas nos diários oficiais
 #' @param territory_id número dos municípios, seguindo os códigos da tabela
-#' @param offset
-#' @param size
+#' @param offset sempre igual a 0
+#' @param size numero de a diários oficiais desejados
 #'
-#'return descrição do resultado
+#' @return um arquivo json contendo os diários oficiais para os parâmetros indicados
 #'export
 
 get_gazettes <- function(since = NULL,
