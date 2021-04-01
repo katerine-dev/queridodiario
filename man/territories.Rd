@@ -7,7 +7,8 @@
 \format{
 um data frame com 12 e 3 variaveis:
 
-\describe{\item{territory_id}{codigo ID.}
+\describe{
+\item{territory_id}{codigo ID.}
 \item{territory_name}{nome da respectiva capital}
 \item{territory_state}{nome do estado respectivo.}
 }

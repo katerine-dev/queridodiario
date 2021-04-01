@@ -16,7 +16,7 @@ O Querido Diário fornece uma maneira simples de acessar à
 consultas a ela. Diariamente estamos [coletando os
 diários](https://github.com/okfn-brasil/querido-diario) e [processando
 seu conteúdo](https://github.com/okfn-brasil/querido-diario-toolbox)
-para obter todo o texto desses diaŕios.
+para obter todo o texto desses diários.
 
 No pacote está disponível uma base contendo as informaçoes sobre os
 municípios e seus respectivos IDs.
@@ -27,18 +27,13 @@ Este é o Wrapper em Python:
 ## Instalação
 
 Para instalar a partir do endereço de um dos repositórios você precisa
-ter o pacote {devtools} instalado
+ter o pacote {remotes} instalado
 
 ``` r
-# Para instalar pacote devtools
-install.packages("devtools")
-#> Installing package into '/home/kate/R/x86_64-pc-linux-gnu-library/4.0'
-#> (as 'lib' is unspecified)
+# Para instalar pacote remotes
+install.packages("remotes")
 # Para instalar a versão GitHub (dev)
-devtools::install_github("katerine-dev/queridodiario")
-#> Using github PAT from envvar GITHUB_PAT
-#> Skipping install of 'queridodiario' from a github remote, the SHA1 (6b3c2351) has not changed since last install.
-#>   Use `force = TRUE` to force installation
+remotes::install_github("katerine-dev/queridodiario")
 ```
 
 ## Exemplo
@@ -59,25 +54,37 @@ pode retornar uma quantidade de resultados muito grande. Por exemplo, se
 procurarmos por “prefeito”, é bem provável que todos os Diários
 contenham essa palavra.
 
-``` r
-library(queridodiario)
+O pacote pode ser carregado usando:
 
-# Retorna os diários entre  01/01/2020 and 31/01/2021 que contém as palavras 
+``` r
+library(queridodiario) # Carrega o pacote
+library(tidyverse)
+```
+
+``` r
+# para visualizar a base 
+glimpse(territories)
+#> Rows: 12
+#> Columns: 3
+#> $ territory_id    <chr> "2408102", "5208707", "2927408", "5002704", "4205407",…
+#> $ territory_name  <chr> "Natal", "Goiânia", "Salvador", "Campo Grande", "Flori…
+#> $ territory_state <chr> "RN", "GO", "BA", "MS", "SC", "TO", "RJ", "PB", "PI", …
+```
+
+## Usando a função
+
+``` r
+# Retorna os diários entre  01/01/2020 e 31/01/2021 que contém as palavras 
 # 'covid' e 'cloroquina' no território '2408102' (Natal-RN)
 
 #get_gazettes(
- # c(
-   # since = "2020-01-01",
+  # since = "2020-01-01",
    # until = "2021-01-31",
-   # keywords = c("covid", "cloroquina"),
-  # territory_id = "1302603",
-   # offset = 0,
-  #  size = 10
-#  )
+  #  keywords = c("covid", "cloroquina"),
+    #territory_id = "1302603",
+  #  offset = 0,
+   # size = 10
 #)
-
-# para visualizar a base 
-#territories
 ```
 
 ## Requisitos
@@ -86,4 +93,5 @@ library(queridodiario)
 
 ## Licença
 
-O `{queridodiario}` é licenciado sob os termos [MIT]().
+O `{queridodiario}` é licenciado sob os termos
+[MIT](https://github.com/katerine-dev/queridodiario/blob/master/LICENSE.md).

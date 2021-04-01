@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 
 Esse pacote faz parte de um projeto chamado [Querido Diário](https://querido-diario-site.netlify.app/) da [Open Knowledge Brasil](https://www.ok.org.br/). A iniciativa tem como objetivo libertar e centralizar as informações nos diários oficiais dos municípios, hoje presas em PDFs obscuros de acesso complicado. 
 
-O Querido Diário fornece uma maneira simples de acessar à [API](https://github.com/okfn-brasil/querido-diario-api) e fazer consultas a ela. Diariamente estamos [coletando os diários](https://github.com/okfn-brasil/querido-diario) e [processando seu conteúdo](https://github.com/okfn-brasil/querido-diario-toolbox) para obter todo o texto desses diaŕios.  
+O Querido Diário fornece uma maneira simples de acessar à [API](https://github.com/okfn-brasil/querido-diario-api) e fazer consultas a ela. Diariamente estamos [coletando os diários](https://github.com/okfn-brasil/querido-diario) e [processando seu conteúdo](https://github.com/okfn-brasil/querido-diario-toolbox) para obter todo o texto desses diários.  
 
 No pacote está disponível uma base contendo as informaçoes sobre os municípios e seus respectivos IDs. 
 
@@ -27,13 +27,13 @@ Este é o Wrapper em Python: [querido-diario-api-wrapper](https://github.com/ren
 
 ## Instalação 
 
-Para instalar a partir do endereço de um dos repositórios você precisa ter o pacote {devtools} instalado
+Para instalar a partir do endereço de um dos repositórios você precisa ter o pacote {remotes} instalado
 
-```{r}
-# Para instalar pacote devtools
-install.packages("devtools")
+```{r eval=FALSE}
+# Para instalar pacote remotes
+install.packages("remotes")
 # Para instalar a versão GitHub (dev)
-devtools::install_github("katerine-dev/queridodiario")
+remotes::install_github("katerine-dev/queridodiario")
 ```
 
 ## Exemplo
@@ -42,26 +42,33 @@ Algumas buscas que são possíveis de se fazer nesse momento: - Obter os Diário
 
 A busca por palavra-chave ainda é limitada e ainda não conseguimos isolar partes dos Diários. Então a busca por palavras muito genéricas pode retornar uma quantidade de resultados muito grande. Por exemplo, se procurarmos por "prefeito", é bem provável que todos os Diários contenham essa palavra.
 
+O pacote pode ser carregado usando:
 
-```{r example}
-library(queridodiario)
+```{r message = FALSE}
+library(queridodiario) # Carrega o pacote
+library(tidyverse)
+```
 
-# Retorna os diários entre  01/01/2020 and 31/01/2021 que contém as palavras 
+```{r}
+# para visualizar a base 
+glimpse(territories)
+```
+
+## Usando a função 
+
+```{r}
+# Retorna os diários entre  01/01/2020 e 31/01/2021 que contém as palavras 
 # 'covid' e 'cloroquina' no território '2408102' (Natal-RN)
 
 #get_gazettes(
- # c(
-   # since = "2020-01-01",
+  # since = "2020-01-01",
    # until = "2021-01-31",
-   # keywords = c("covid", "cloroquina"),
-  # territory_id = "1302603",
-   # offset = 0,
-  #  size = 10
-#  )
+  #  keywords = c("covid", "cloroquina"),
+    #territory_id = "1302603",
+  #  offset = 0,
+   # size = 10
 #)
 
-# para visualizar a base 
-#territories
 ```
 ## Requisitos 
 
@@ -69,4 +76,4 @@ library(queridodiario)
 
 ## Licença  
 
-O `{queridodiario}` é licenciado sob os termos [MIT]().
+O `{queridodiario}` é licenciado sob os termos [MIT](https://github.com/katerine-dev/queridodiario/blob/master/LICENSE.md).
