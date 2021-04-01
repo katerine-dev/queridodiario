@@ -10,7 +10,6 @@
 #'
 #' @return um arquivo json contendo os diários oficiais para os parâmetros indicados
 #'export
-
 get_gazettes <- function(since = NULL,
                      until = NULL,
                      keywords = NULL,
@@ -37,6 +36,6 @@ get_gazettes <- function(since = NULL,
   api  <-paste(c(BASE_API_URL, endpoint, "?", url_params), collapse = "")
   response <- httr::GET(api)
   response$status
-  responseParsed <- content(response, as="parsed")
+  responseParsed <- httr::content(response, as="parsed")
   responseParsed
 }
