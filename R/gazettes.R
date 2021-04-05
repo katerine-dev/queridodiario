@@ -38,6 +38,7 @@ get_gazettes <- function(since = NULL,
   api  <- paste(c(BASE_API_URL, endpoint, "?", url_params), collapse = "")
   response <- httr::GET(api)
   response$status
-  responseParsed <- httr::content(response, as="parsed")
-  responseParsed
+  responseParsed <- httr::content(response, as="text")
+  #df <- lapply(responseParsed[[2]], as.data.frame)
+  #dt <- rbindlist(df, fill = TRUE)
 }
