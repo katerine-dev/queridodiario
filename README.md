@@ -78,12 +78,12 @@ glimpse(territories)
 # 'covid' e 'cloroquina' no território '2408102' (Natal-RN)
 
 #get_gazettes(
-  # since = "2020-01-01",
-   # until = "2021-01-31",
-  #  keywords = c("covid", "cloroquina"),
-    #territory_id = "1302603",
-  #  offset = 0,
-   # size = 10
+ # since = "2020-01-01",
+#  until = "2021-01-31",
+#  keywords = c("covid", "cloroquina"),
+ # territory_id = "1302603",
+#  offset = 0,
+ # size = 10
 #)
 ```
 
