@@ -1,16 +1,15 @@
 #' get_gazettes
 #'
-#' Requisita diarios oficiais para a API do Querido Diario e retorna um json
-#' @param since data a partir da qual, em formato YYY-MM-DD
-#' @param until data ate quando, em formato YYY-MM-DD
-#' @param keywords palavras-chave que sera pesquisadas nos diarios oficiais
-#' @param territory_id numero dos municipios, seguindo os codigos da tabela do ibge
+#' Requisita diários oficiais à API do Querido Diário e retorna um json
+#' @param since data a partir da qual se deseja pesquisar, em formato YYY-MM-DD
+#' @param until data até quando, em formato YYY-MM-DD
+#' @param keywords palavras-chave que serão pesquisadas nos diários oficiais
+#' @param territory_id número dos municípios, seguindo os códigos da tabela
 #' @param offset sempre igual a 0
-#' @param size numero de a diarios oficiais desejados
+#' @param size numero de a diários oficiais desejados
 #'
-#' @return um arquivo json contendo os diarios oficiais para os parametros indicados
+#' @return um arquivo json contendo os diários oficiais para os parâmetros indicados
 #'export
-
 get_gazettes <- function(since = NULL,
                      until = NULL,
                      keywords = NULL,
@@ -37,6 +36,6 @@ get_gazettes <- function(since = NULL,
   api  <-paste(c(BASE_API_URL, endpoint, "?", url_params), collapse = "")
   response <- httr::GET(api)
   response$status
-  responseParsed <- content(response, as="parsed")
+  responseParsed <- httr::content(response, as="parsed")
   responseParsed
 }

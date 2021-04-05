@@ -14,6 +14,7 @@ get_gazettes(
 )
 }
 \arguments{
+<<<<<<< HEAD
 \item{since}{data a partir da qual, em formato YYY-MM-DD}
 
 \item{until}{data ate quando, em formato YYY-MM-DD}
@@ -32,4 +33,24 @@ export
 }
 \description{
 Requisita diarios oficiais para a API do Querido Diario e retorna um json
+=======
+\item{since}{data a partir da qual se deseja pesquisar, em formato YYY-MM-DD}
+
+\item{until}{data até quando, em formato YYY-MM-DD}
+
+\item{keywords}{palavras-chave que serão pesquisadas nos diários oficiais}
+
+\item{territory_id}{número dos municípios, seguindo os códigos da tabela}
+
+\item{offset}{sempre igual a 0}
+
+\item{size}{numero de a diários oficiais desejados}
+}
+\value{
+um arquivo json contendo os diários oficiais para os parâmetros indicados
+export
+}
+\description{
+Requisita diários oficiais à API do Querido Diário e retorna um json
+>>>>>>> bd581248e42131603981f2df6900ca85e79a7c98
 }
