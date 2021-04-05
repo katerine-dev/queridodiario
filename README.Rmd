@@ -63,7 +63,7 @@ glimpse(territories)
 get_gazettes(
   since = "2020-01-01",
   until = "2021-01-31",
-  keywords = c("covid", "cloroquina"),
+  keywords = "covid",
   territory_id = "1302603",
   offset = 0,
   size = 10
