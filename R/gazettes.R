@@ -35,7 +35,10 @@ get_gazettes <- function(since = NULL,
   url_params <-  paste(payload, collapse = "&")
   api  <-paste(c(BASE_API_URL, endpoint, "?", url_params), collapse = "")
   response <- httr::GET(api)
-  response$status
-  responseParsed <- httr::content(response, as="parsed")
+  if (response$status == 200) {
+    responseParsed <- httr::content(response, as="text") %>%
+      jsonlite::fromJSON() %>%
+      purrr::pluck("gazettes")
+  }
   responseParsed
 }
