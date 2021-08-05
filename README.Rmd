@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 ## Visão Geral
 
-Esse pacote faz parte de um projeto chamado [Querido Diário](https://querido-diario-site.netlify.app/) da [Open Knowledge Brasil](https://www.ok.org.br/). A iniciativa tem como objetivo libertar e centralizar as informações nos diários oficiais dos municípios, hoje presas em PDFs obscuros de acesso complicado. 
+Esse pacote faz parte de um projeto chamado [Querido Diário](https://queridodiario.ok.org.br/) da [Open Knowledge Brasil](https://www.ok.org.br/). A iniciativa tem como objetivo libertar e centralizar as informações nos diários oficiais dos municípios, hoje presas em PDFs obscuros de acesso complicado. 
 
 O Querido Diário fornece uma maneira simples de acessar à [API](https://github.com/okfn-brasil/querido-diario-api) e fazer consultas a ela. Diariamente estamos [coletando os diários](https://github.com/okfn-brasil/querido-diario) e [processando seu conteúdo](https://github.com/okfn-brasil/querido-diario-toolbox) para obter todo o texto desses diários.  
 
@@ -45,34 +45,54 @@ A busca por palavra-chave ainda é limitada e ainda não conseguimos isolar part
 O pacote pode ser carregado usando:
 
 ```{r message = FALSE}
-#library(queridodiario) # Carrega o pacote
+library(queridodiario) # Carrega o pacote
 ```
 
 ```{r echo=TRUE}
 # para visualizar a base 
-#dplyr::glimpse(territories)
+dplyr::glimpse(territories)
 ```
 
 ## Usando a função 
 
 ```{r}
 # Retorna os diários entre  01/01/2020 e 31/01/2021 que contém as palavras 
-# 'covid' e 'cloroquina' no território '2408102' (Natal-RN)
+# 'covid' e 'cloroquina' no território '2408102' (Manaus-AM)
 
-#get_gazettes(
- # since = "2020-01-01",
- # until = "2021-01-31",
- # keywords = "covid",
- # territory_id = "1302603",
-#  offset = 0,
- # size = 10
-#)
+get_gazettes(
+  since = "2020-01-01",
+  until = "2021-01-31",
+  keywords = "covid",
+  territory_id = "1302603",
+  offset = 0,
+  size = 1
+)
 
 ```
-## Requisitos 
 
-`{queridodiario}` requer uma versão do R superior ou igual a 3.4
 
-## Licença  
+### Dica
+É possível converter o resultado da função em um data frame utilizando a função `fromJSON()` do pacote [jsonlite](https://cran.r-project.org/web/packages/jsonlite/jsonlite.pdf).
+
+#### Exemplo
+```{r}
+meus_parametros <- get_gazettes(
+  since = "2020-01-01",
+  until = "2021-01-31",
+  keywords = "covid",
+  territory_id = "1302603",
+  offset = 0,
+  size = 3
+)
+text <- as.character(jsonlite::toJSON(meus_parametros))
+df <- data.frame(jsonlite::fromJSON(text))
+df |>
+  dplyr::glimpse()
+```
+### Requisitos 
+
+`{queridodiario}` requer uma versão do R superior ou igual a 2.10.
+
+### Licença  
 
 O `{queridodiario}` é licenciado sob os termos [MIT](https://github.com/katerine-dev/queridodiario/blob/master/LICENSE.md).

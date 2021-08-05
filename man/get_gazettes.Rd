@@ -10,7 +10,7 @@ get_gazettes(
   keywords = NULL,
   territory_id = NULL,
   offset = 0,
-  size = 10
+  size = NULL
 )
 }
 \arguments{
@@ -20,13 +20,18 @@ get_gazettes(
 
 \item{keywords}{palavras-chave que serão pesquisadas nos diarios oficiais}
 
-\item{territory_id}{número dos municipios, seguindo os codigos da tabela}
+\item{territory_id}{numero dos municipios, seguindo os codigos da tabela}
 
 \item{offset}{sempre igual a 0}
+
+\item{size}{retorna uma quantidade de itens}
 }
 \value{
-um arquivo json contendo os diários oficiais para os parâmetros indicados
+um arquivo json contendo os diarios oficiais para os parametros indicados
 }
 \description{
-Requisita diarios oficiais a API do Querido Diário e retorna um json
+Requisita diarios oficiais a API do Querido Diario e retorna um json
+}
+\seealso{
+data frame com IDs dos \link{territories}
 }
