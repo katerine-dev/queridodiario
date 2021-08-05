@@ -31,9 +31,9 @@ ter o pacote {remotes} instalado
 
 ``` r
 # Para instalar pacote remotes
-install.packages("remotes")
+install.packages("devtools")
 # Para instalar a versão GitHub (dev)
-remotes::install_github("katerine-dev/queridodiario")
+devtools::install_github("katerine-dev/queridodiario")
 ```
 
 ## Exemplo
@@ -45,8 +45,7 @@ buscar todos os Diários Oficiais de Natal-RN no período de 01/01/2012
 até 31/01/2021; - Obter todos os Diários Oficiais que contenham
 determinadas palavras-chave. Por exemplo podemos buscar todos os Diários
 Oficiais de Natal-RN que contenham as palavras “COVID” e
-“hidroxicloroquina” em toda história ou em determinado período de
-tempo.
+“hidroxicloroquina” em toda história ou em determinado período de tempo.
 
 A busca por palavra-chave ainda é limitada e ainda não conseguimos
 isolar partes dos Diários. Então a busca por palavras muito genéricas
@@ -57,18 +56,12 @@ contenham essa palavra.
 O pacote pode ser carregado usando:
 
 ``` r
-library(queridodiario) # Carrega o pacote
-library(tidyverse)
+#library(queridodiario) # Carrega o pacote
 ```
 
 ``` r
 # para visualizar a base 
-glimpse(territories)
-#> Rows: 12
-#> Columns: 3
-#> $ territory_id    <chr> "2408102", "5208707", "2927408", "5002704", "4205407",…
-#> $ territory_name  <chr> "Natal", "Goiânia", "Salvador", "Campo Grande", "Flori…
-#> $ territory_state <chr> "RN", "GO", "BA", "MS", "SC", "TO", "RJ", "PB", "PI", …
+#dplyr::glimpse(territories)
 ```
 
 ## Usando a função
@@ -77,19 +70,14 @@ glimpse(territories)
 # Retorna os diários entre  01/01/2020 e 31/01/2021 que contém as palavras 
 # 'covid' e 'cloroquina' no território '2408102' (Natal-RN)
 
-get_gazettes(
-  since = "2020-01-01",
-  until = "2021-01-31",
-  keywords = "covid",
-  territory_id = "1302603",
-  offset = 0,
-  size = 10
-)
-#> $total_gazettes
-#> [1] 0
-#> 
-#> $gazettes
-#> list()
+#get_gazettes(
+ # since = "2020-01-01",
+ # until = "2021-01-31",
+ # keywords = "covid",
+ # territory_id = "1302603",
+#  offset = 0,
+ # size = 10
+#)
 ```
 
 ## Requisitos

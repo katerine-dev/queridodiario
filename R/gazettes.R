@@ -17,28 +17,25 @@ get_gazettes <- function(since = NULL,
                      keywords = NULL,
                      territory_id = NULL,
                      offset = 0,
-                     size = 10) {
-  BASE_API_URL <- "https://queridodiario.ok.org.br/api/"
-  endpoint <- "gazettes/"
+                     size = NULL) {
+  BASE_API_URL <- "https://queridodiario.ok.org.br"
+  url <- httr::modify_url(BASE_API_URL, path = "/api/gazettes/")
+
   if (!is.null(territory_id)) {
-    endpoint <-  sprintf("gazettes/%s", territory_id)
+    url <- paste(url, territory_id, sep="")
   }
-  payload <- c(sprintf("offset=%s", offset),
-               sprintf("size=%s", size))
-  if (!is.null(since)) {
-    payload <- append(payload, sprintf("since=%s", since))
-  }
-  if (!is.null(until)) {
-    payload <- append(payload, sprintf("until=%s", until))
-  }
-  if (!is.null(keywords)) {
-    payload <- append(payload, sprintf("keywords=%s", keywords))
-  }
-  url_params <-  paste(payload, collapse = "&")
-  api  <- paste(c(BASE_API_URL, endpoint, "?", url_params), collapse = "")
-  response <- httr::GET(api)
-  response$status
-  responseParsed <- httr::content(response, as="text")
-  #df <- lapply(responseParsed[[2]], as.data.frame)
-  #dt <- rbindlist(df, fill = TRUE)
+
+  url_params = list(since = since,
+                    until = until,
+                    keywords = keywords,
+                    offset = offset,
+                    size = size)
+
+  response <- httr::GET(url, query=url_params)
+
+  httr::stop_for_status(response)
+
+  responseParsed <- httr::content(response, "parsed")
+  responseParsed
+
 }

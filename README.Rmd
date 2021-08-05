@@ -31,9 +31,9 @@ Para instalar a partir do endereço de um dos repositórios você precisa ter o 
 
 ```{r eval=FALSE}
 # Para instalar pacote remotes
-install.packages("remotes")
+install.packages("devtools")
 # Para instalar a versão GitHub (dev)
-remotes::install_github("katerine-dev/queridodiario")
+devtools::install_github("katerine-dev/queridodiario")
 ```
 
 ## Exemplo
@@ -45,13 +45,12 @@ A busca por palavra-chave ainda é limitada e ainda não conseguimos isolar part
 O pacote pode ser carregado usando:
 
 ```{r message = FALSE}
-library(queridodiario) # Carrega o pacote
-library(tidyverse)
+#library(queridodiario) # Carrega o pacote
 ```
 
-```{r}
+```{r echo=TRUE}
 # para visualizar a base 
-glimpse(territories)
+#dplyr::glimpse(territories)
 ```
 
 ## Usando a função 
@@ -60,14 +59,14 @@ glimpse(territories)
 # Retorna os diários entre  01/01/2020 e 31/01/2021 que contém as palavras 
 # 'covid' e 'cloroquina' no território '2408102' (Natal-RN)
 
-get_gazettes(
-  since = "2020-01-01",
-  until = "2021-01-31",
-  keywords = "covid",
-  territory_id = "1302603",
-  offset = 0,
-  size = 10
-)
+#get_gazettes(
+ # since = "2020-01-01",
+ # until = "2021-01-31",
+ # keywords = "covid",
+ # territory_id = "1302603",
+#  offset = 0,
+ # size = 10
+#)
 
 ```
 ## Requisitos 
