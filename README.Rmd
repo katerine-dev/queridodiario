@@ -85,7 +85,9 @@ meus_parametros <- get_gazettes(
   size = 3
 )
 text <- as.character(jsonlite::toJSON(meus_parametros))
+
 df <- data.frame(jsonlite::fromJSON(text))
+
 df |>
   dplyr::glimpse()
 ```
