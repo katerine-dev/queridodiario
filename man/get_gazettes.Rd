@@ -14,9 +14,9 @@ get_gazettes(
 )
 }
 \arguments{
-\item{since}{data a partir da qual se deseja pesquisar, em formato YYY-MM-DD}
+\item{since}{data a partir da qual se deseja pesquisar, em formato YYYY-MM-DD}
 
-\item{until}{data ate quando, em formato YYY-MM-DD}
+\item{until}{data ate quando, em formato YYYY-MM-DD}
 
 \item{keywords}{palavras-chave que serão pesquisadas nos diarios oficiais}
 
@@ -24,7 +24,7 @@ get_gazettes(
 
 \item{offset}{sempre igual a 0}
 
-\item{size}{retorna uma quantidade de itens}
+\item{size}{a quantidade de itens que serão retornados}
 }
 \value{
 um arquivo json contendo os diarios oficiais para os parametros indicados

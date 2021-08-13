@@ -53,6 +53,8 @@ library(queridodiario) # Carrega o pacote
 dplyr::glimpse(territories)
 ```
 
+Contendo: 
+
 ```{r echo=FALSE}
 knitr::kable(territories)
 ```
@@ -78,6 +80,7 @@ get_gazettes(
 É possível converter o resultado da função em um data frame utilizando a função `fromJSON()` do pacote [jsonlite](https://cran.r-project.org/web/packages/jsonlite/jsonlite.pdf).
 
 #### Exemplo
+
 ```{r}
 meus_parametros <- get_gazettes(
   since = "2020-01-01",
@@ -91,8 +94,7 @@ text <- as.character(jsonlite::toJSON(meus_parametros))
 
 df <- data.frame(jsonlite::fromJSON(text))
 
-df |>
-  dplyr::glimpse()
+dplyr::glimpse(df)
 ```
 ### Requisitos 
 
