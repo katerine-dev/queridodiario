@@ -53,6 +53,9 @@ library(queridodiario) # Carrega o pacote
 dplyr::glimpse(territories)
 ```
 
+```{r echo=FALSE}
+knitr::kable(territories)
+```
 ## Usando a função 
 
 ```{r}

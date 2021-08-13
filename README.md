@@ -45,7 +45,8 @@ buscar todos os Diários Oficiais de Natal-RN no período de 01/01/2012
 até 31/01/2021; - Obter todos os Diários Oficiais que contenham
 determinadas palavras-chave. Por exemplo podemos buscar todos os Diários
 Oficiais de Natal-RN que contenham as palavras “COVID” e
-“hidroxicloroquina” em toda história ou em determinado período de tempo.
+“hidroxicloroquina” em toda história ou em determinado período de
+tempo.
 
 A busca por palavra-chave ainda é limitada e ainda não conseguimos
 isolar partes dos Diários. Então a busca por palavras muito genéricas
@@ -64,10 +65,25 @@ library(queridodiario) # Carrega o pacote
 dplyr::glimpse(territories)
 #> Rows: 12
 #> Columns: 3
-#> $ territory_id    <chr> "2408102", "5208707", "2927408", "5002704", "4205407",…
-#> $ territory_name  <chr> "Natal", "Goiânia", "Salvador", "Campo Grande", "Flori…
-#> $ territory_state <chr> "RN", "GO", "BA", "MS", "SC", "TO", "RJ", "PB", "PI", …
+#> $ territory_id    <chr> "2408102", "5208707", "2927408", "5002704", "4205407",~
+#> $ territory_name  <chr> "Natal", "Goiânia", "Salvador", "Campo Grande", "Flori~
+#> $ territory_state <chr> "RN", "GO", "BA", "MS", "SC", "TO", "RJ", "PB", "PI", ~
 ```
+
+| territory\_id | territory\_name | territory\_state |
+| :------------ | :-------------- | :--------------- |
+| 2408102       | Natal           | RN               |
+| 5208707       | Goiânia         | GO               |
+| 2927408       | Salvador        | BA               |
+| 5002704       | Campo Grande    | MS               |
+| 4205407       | Florianópolis   | SC               |
+| 1721000       | Palmas          | TO               |
+| 3304557       | Rio de Janeiro  | RJ               |
+| 2507507       | João Pessoa     | PB               |
+| 2211001       | Teresina        | PI               |
+| 1400100       | Boa Vista       | RR               |
+| 2704302       | Maceió          | AL               |
+| 1302603       | Manaus          | AM               |
 
 ## Usando a função
 
@@ -133,19 +149,19 @@ text <- as.character(jsonlite::toJSON(meus_parametros))
 
 df <- data.frame(jsonlite::fromJSON(text))
 
-df |>
-  dplyr::glimpse()
+#df |>
+dplyr::glimpse(df)
 #> Rows: 3
 #> Columns: 9
 #> $ total_gazettes            <int> 209, 209, 209
 #> $ gazettes.territory_id     <list> "1302603", "1302603", "1302603"
 #> $ gazettes.date             <list> "2021-01-29", "2021-01-28", "2021-01-26"
-#> $ gazettes.url              <list> "https://querido-diario.nyc3.cdn.digitalocea…
+#> $ gazettes.url              <list> "https://querido-diario.nyc3.cdn.digitalocea~
 #> $ gazettes.territory_name   <list> "Manaus", "Manaus", "Manaus"
 #> $ gazettes.state_code       <list> "AM", "AM", "AM"
-#> $ gazettes.highlight_texts  <list> "XII – locação de veículos; \n \nXIII – des…
+#> $ gazettes.highlight_texts  <list> "XII – locação de veículos; \n \nXIII – des~
 #> $ gazettes.is_extra_edition <list> FALSE, FALSE, FALSE
-#> $ gazettes.file_raw_txt     <list> <NULL>, <NULL>, "https://querido-diario.nyc…
+#> $ gazettes.file_raw_txt     <list> <NULL>, <NULL>, "https://querido-diario.nyc~
 ```
 
 ### Requisitos

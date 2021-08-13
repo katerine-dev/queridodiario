@@ -2,12 +2,12 @@
 #'
 #' @description Requisita diarios oficiais a API do Querido Diario e retorna um json
 #'
-#' @param since data a partir da qual se deseja pesquisar, em formato YYY-MM-DD
-#' @param until data ate quando, em formato YYY-MM-DD
+#' @param since data a partir da qual se deseja pesquisar, em formato YYYY-MM-DD
+#' @param until data ate quando, em formato YYYY-MM-DD
 #' @param keywords palavras-chave que serão pesquisadas nos diarios oficiais
 #' @param territory_id numero dos municipios, seguindo os codigos da tabela
 #' @param offset sempre igual a 0
-#' @param size retorna uma quantidade de itens
+#' @param size a quantidade de itens que serão retornados
 #'
 #' @return um arquivo json contendo os diarios oficiais para os parametros indicados
 #'
