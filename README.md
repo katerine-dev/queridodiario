@@ -71,20 +71,20 @@ dplyr::glimpse(territories)
 
 Contendo:
 
-| territory\_id | territory\_name | territory\_state |
-|:--------------|:----------------|:-----------------|
-| 2408102       | Natal           | RN               |
-| 5208707       | Goiânia         | GO               |
-| 2927408       | Salvador        | BA               |
-| 5002704       | Campo Grande    | MS               |
-| 4205407       | Florianópolis   | SC               |
-| 1721000       | Palmas          | TO               |
-| 3304557       | Rio de Janeiro  | RJ               |
-| 2507507       | João Pessoa     | PB               |
-| 2211001       | Teresina        | PI               |
-| 1400100       | Boa Vista       | RR               |
-| 2704302       | Maceió          | AL               |
-| 1302603       | Manaus          | AM               |
+| territory_id | territory_name | territory_state |
+|:-------------|:---------------|:----------------|
+| 2408102      | Natal          | RN              |
+| 5208707      | Goiânia        | GO              |
+| 2927408      | Salvador       | BA              |
+| 5002704      | Campo Grande   | MS              |
+| 4205407      | Florianópolis  | SC              |
+| 1721000      | Palmas         | TO              |
+| 3304557      | Rio de Janeiro | RJ              |
+| 2507507      | João Pessoa    | PB              |
+| 2211001      | Teresina       | PI              |
+| 1400100      | Boa Vista      | RR              |
+| 2704302      | Maceió         | AL              |
+| 1302603      | Manaus         | AM              |
 
 ## Usando a função
 
@@ -127,42 +127,6 @@ get_gazettes(
 #> 
 #> $gazettes[[1]]$is_extra_edition
 #> [1] FALSE
-```
-
-### Dica
-
-É possível converter o resultado da função em um data frame utilizando a
-função `fromJSON()` do pacote
-[jsonlite](https://cran.r-project.org/web/packages/jsonlite/jsonlite.pdf).
-
-#### Exemplo
-
-``` r
-meus_parametros <- get_gazettes(
-  since = "2020-01-01",
-  until = "2021-01-31",
-  keywords = "covid",
-  territory_id = "1302603",
-  offset = 0,
-  size = 3
-)
-text <- as.character(jsonlite::toJSON(meus_parametros))
-
-df <- data.frame(jsonlite::fromJSON(text))
-
-df |>
-  dplyr::glimpse()
-#> Rows: 3
-#> Columns: 9
-#> $ total_gazettes            <int> 209, 209, 209
-#> $ gazettes.territory_id     <list> "1302603", "1302603", "1302603"
-#> $ gazettes.date             <list> "2021-01-29", "2021-01-28", "2021-01-26"
-#> $ gazettes.url              <list> "https://querido-diario.nyc3.cdn.digitalocea…
-#> $ gazettes.territory_name   <list> "Manaus", "Manaus", "Manaus"
-#> $ gazettes.state_code       <list> "AM", "AM", "AM"
-#> $ gazettes.highlight_texts  <list> "XII – locação de veículos; \n \nXIII – des…
-#> $ gazettes.is_extra_edition <list> FALSE, FALSE, FALSE
-#> $ gazettes.file_raw_txt     <list> <NULL>, <NULL>, "https://querido-diario.nyc…
 ```
 
 ### Requisitos

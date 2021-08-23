@@ -25,7 +25,7 @@ get_gazettes <- function(since = NULL,
   url <- httr::modify_url(BASE_API_URL, path = "/api/gazettes/")
 
   if (!is.null(territory_id)) {
-    url <- paste(url, territory_id, sep="")
+    url <- paste0(url, territory_id)
   }
 
   url_params = list(since = since,
@@ -37,5 +37,8 @@ get_gazettes <- function(since = NULL,
   response <- httr::GET(url, query = url_params)
   httr::stop_for_status(response)
   responseParsed <- httr::content(response, "parsed")
-  responseParsed
+  text <- as.character(jsonlite::toJSON(responseParsed))
+
+  data.frame(jsonlite::fromJSON(text))
+
 }
