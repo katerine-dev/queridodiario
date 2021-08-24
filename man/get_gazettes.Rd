@@ -10,7 +10,8 @@ get_gazettes(
   keywords = NULL,
   territory_id = NULL,
   offset = 0,
-  size = NULL
+  size = NULL,
+  returnDF = TRUE
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ get_gazettes(
 \item{offset}{sempre igual a 0}
 
 \item{size}{a quantidade de itens que serão retornados}
+
+\item{returnDF}{para indicar se o retorno deve ser JSON or data.frame}
 }
 \value{
 um arquivo json contendo os diarios oficiais para os parametros indicados
